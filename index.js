@@ -1,10 +1,14 @@
 const express = require('express');
 const rateLimit = require('express-rate-limit');
 const fs = require('fs');
+const nocache = require("nocache");
+
 
 const app = express();
+app.use(nocache());
+
 app.set('trust proxy', true);
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4500;
 
 // Load reasons from JSON
 const reasons = JSON.parse(fs.readFileSync('./reasons-ES.json', 'utf-8'));
